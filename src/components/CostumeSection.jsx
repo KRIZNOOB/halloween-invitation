@@ -1,24 +1,24 @@
 export default function CostumeSection() {
   const categories = [
     {
-      title: 'Best Overall Costume',
-      tag: 'Juara Utama',
-      desc: 'Kostum dengan detail dan penampilan yang paling memukau serta totalitas.',
+      title: 'Lorem Ipsum Dolor',
+      tag: 'Lorem Tag',
+      desc: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
     },
     {
-      title: 'Most Relatable / Funniest',
-      tag: 'Paling Lucu & Menghibur',
-      desc: 'Kostum bertema komedi, satir dunia kerja (corporate humor), atau karakter unik.',
+      title: 'Amet Consectetur',
+      tag: 'Ipsum Tag',
+      desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
     },
     {
-      title: 'Scariest Look',
-      tag: 'Karakter Terseram',
-      desc: 'Riasan atau kostum bertema horor klasik/modern yang paling meyakinkan.',
+      title: 'Adipiscing Elit Sed',
+      tag: 'Dolor Tag',
+      desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.',
     },
     {
-      title: 'Best Duo / Group',
-      tag: 'Kompak Bertim',
-      desc: 'Kekompakan kostum berdua atau bertiga dengan rekan satu tim/divisi.',
+      title: 'Tempor Incididunt',
+      tag: 'Sit Tag',
+      desc: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.',
     },
   ];
 
@@ -32,7 +32,7 @@ export default function CostumeSection() {
           Kategori Penghargaan Kostum
         </h2>
         <p className="text-xs sm:text-sm text-spooky-textMuted mt-1">
-          Partisipasi bersifat opsional. Kamu bebas berkreasi atau sekadar mengenakan pakaian hitam kasual.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
         </p>
       </div>
 
@@ -53,6 +53,14 @@ export default function CostumeSection() {
             </p>
           </div>
         ))}
+      </div>
+
+      {/* Reminder Banner - Sleek & Refined */}
+      <div className="mt-8 py-3.5 px-5 rounded-xl bg-orange-500/[0.06] border border-orange-500/20 flex items-center justify-center gap-2.5 text-center">
+        <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
+        <p className="text-xs sm:text-sm font-medium text-orange-200/90 tracking-wider uppercase">
+          Don't forget to wear ur best costume
+        </p>
       </div>
     </section>
   );

@@ -34,7 +34,7 @@ export default function Hero() {
 
         {/* Spooky Tagline */}
         <p className="text-sm sm:text-base md:text-lg text-spooky-textMuted max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-          Tinggalkan meja kerjamu sebelum kegelapan menelan segalanya. Malam keramat di mana batas realitas kantor dan dunia lain melebur... Masuklah jika bernyali.
+          Tinggalkan meja kerjamu sebelum kegelapan menelan segalanya. Masuklah jika bernyali...
         </p>
 
         {/* Meta Info Grid - Clean, Spacious, and strictly Single-Line */}
@@ -43,10 +43,10 @@ export default function Hero() {
           <div className="bg-spooky-surface/85 border border-white/15 p-4 sm:p-5 rounded-2xl flex items-center gap-3.5 shadow-card hover:border-orange-500/40 transition-colors">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
             </div>
             <div className="min-w-0">
@@ -60,8 +60,8 @@ export default function Hero() {
           <div className="bg-spooky-surface/85 border border-white/15 p-4 sm:p-5 rounded-2xl flex items-center gap-3.5 shadow-card hover:border-orange-500/40 transition-colors">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
               </svg>
             </div>
             <div className="min-w-0">
@@ -78,7 +78,7 @@ export default function Hero() {
           <div className="bg-spooky-surface/85 border border-white/15 p-4 sm:p-5 rounded-2xl flex items-center gap-3.5 shadow-card hover:border-orange-500/40 transition-colors">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>
+                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
               </svg>
             </div>
             <div className="min-w-0">

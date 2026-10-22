@@ -3,8 +3,8 @@ import { useState } from 'react';
 export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
   const [formData, setFormData] = useState({
     nama: '',
-    kehadiran: 'Hadir',
-    kostum: '',
+    kehadiran: 'Ikut',
+    alasan: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -53,6 +53,12 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
       newErrors.nama = 'Nama lengkap wajib diisi.';
     }
 
+    if (formData.kehadiran === 'Tidak') {
+      if (!formData.alasan.trim() || formData.alasan.trim().length < 2) {
+        newErrors.alasan = 'Mohon sertakan alasan kenapa tidak ikut.';
+      }
+    }
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -60,10 +66,12 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
 
     setIsSubmitting(true);
 
+    const isAttending = formData.kehadiran === 'Ikut';
     const payload = {
       nama: formData.nama.trim(),
       kehadiran: formData.kehadiran,
-      kostum: formData.kostum.trim() || 'Bebas / Kasual',
+      alasan: isAttending ? '-' : formData.alasan.trim(),
+      kostum: isAttending ? 'Hadir' : `Tidak Ikut (Alasan: ${formData.alasan.trim()})`,
       timestamp: new Date().toISOString(),
     };
 
@@ -106,8 +114,8 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
     // Reset form
     setFormData({
       nama: '',
-      kehadiran: 'Hadir',
-      kostum: '',
+      kehadiran: 'Ikut',
+      alasan: '',
     });
   };
 
@@ -118,14 +126,17 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
     >
       <div className="mb-8 text-center max-w-xl mx-auto">
         <span className="text-[11px] font-semibold uppercase tracking-widest text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
-          Konfirmasi Kehadiran
+          RSVP &bull; Konfirmasi Kehadiran
         </span>
 
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-2">
-          Formulir RSVP
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-2 font-creepy tracking-wider text-orange-500">
+          Are you in?
         </h2>
-        <p className="text-xs sm:text-sm text-spooky-textMuted leading-relaxed">
-          Mohon konfirmasikan kehadiran rekan-rekan untuk mempermudah perhitungan katering dan akomodasi acara.
+        <p className="text-xs sm:text-sm text-orange-300/80 font-medium tracking-wide mb-1">
+          Don't forget to wear ur best costume
+        </p>
+        <p className="text-xs text-spooky-textMuted leading-relaxed">
+          Tentukan pilihanmu di bawah ini untuk membantu kami menyiapkan pesta terbaik.
         </p>
       </div>
 
@@ -142,67 +153,117 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
             value={formData.nama}
             onChange={handleChange}
             placeholder="Contoh: Budi Santoso"
-            className="w-full bg-spooky-input border border-white/10 text-white rounded-xl py-3 px-4 text-xs sm:text-sm outline-none focus:border-orange-500/60 focus:bg-[#151022] transition-all"
+            className="w-full bg-spooky-input border border-white/10 text-white rounded-xl py-3 px-4 text-xs sm:text-sm outline-none focus:border-orange-500/60 focus:bg-[#151022] transition-all placeholder:text-gray-500"
             required
           />
           {errors.nama && <p className="text-xs text-red-400">{errors.nama}</p>}
         </div>
 
-        {/* Status Kehadiran: Hadir dan Tidak Hadir */}
+        {/* Pilihan: Are you in? (Ikut vs Enggak) */}
         <div className="space-y-1.5">
           <label className="block text-xs font-semibold text-spooky-textMuted uppercase tracking-wider">
-            Status Kehadiran <span className="text-orange-500">*</span>
+            Are you in? <span className="text-orange-500">*</span>
           </label>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { val: 'Hadir', title: 'Hadir', desc: 'Siap bergabung' },
-              { val: 'Tidak Hadir', title: 'Tidak Hadir', desc: 'Berhalangan' },
-            ].map((opt) => (
-              <label
-                key={opt.val}
-                className={`cursor-pointer rounded-xl p-3.5 border transition-all duration-200 text-center ${
-                  formData.kehadiran === opt.val
-                    ? 'border-orange-500 bg-orange-500/10 text-white shadow-sm'
+              {
+                val: 'Ikut',
+                title: 'Ikut',
+                desc: 'Siap bergabung & pesta',
+                isPositive: true,
+              },
+              {
+                val: 'Tidak',
+                title: 'Tidak',
+                desc: 'Berhalangan hadir',
+                isPositive: false,
+              },
+            ].map((opt) => {
+              const isSelected = formData.kehadiran === opt.val;
+              return (
+                <label
+                  key={opt.val}
+                  className={`cursor-pointer rounded-xl p-4 border transition-all duration-200 text-center flex flex-col items-center ${isSelected
+                    ? opt.isPositive
+                      ? 'border-orange-500/80 bg-orange-500/10 text-white shadow-sm ring-1 ring-orange-500/30'
+                      : 'border-rose-500/80 bg-rose-500/10 text-white shadow-sm ring-1 ring-rose-500/30'
                     : 'border-white/10 bg-white/[0.02] text-spooky-textMuted hover:border-white/20 hover:text-white'
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="kehadiran"
-                  value={opt.val}
-                  checked={formData.kehadiran === opt.val}
-                  onChange={handleChange}
-                  className="sr-only"
-                />
-                <strong className="block text-xs sm:text-sm font-semibold mb-0.5">{opt.title}</strong>
-                <span className="block text-[11px] text-spooky-textDim">{opt.desc}</span>
-              </label>
-            ))}
+                    }`}
+                >
+                  <input
+                    type="radio"
+                    name="kehadiran"
+                    value={opt.val}
+                    checked={isSelected}
+                    onChange={handleChange}
+                    className="sr-only"
+                  />
+                  {/* Refined Smooth Line Icon */}
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center mb-2.5 transition-colors ${isSelected
+                      ? opt.isPositive
+                        ? 'bg-orange-500/20 text-orange-400 border border-orange-500/40'
+                        : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                      : 'bg-white/[0.04] text-spooky-textDim border border-white/10'
+                      }`}
+                  >
+                    {opt.isPositive ? (
+                      <svg
+                        className="w-3.5 h-3.5 stroke-current fill-none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-3.5 h-3.5 stroke-current fill-none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                    )}
+                  </div>
+                  <strong className="block text-xs sm:text-sm font-semibold mb-0.5">{opt.title}</strong>
+                  <span className="block text-[11px] text-spooky-textDim">{opt.desc}</span>
+                </label>
+              );
+            })}
           </div>
         </div>
 
-        {/* Rencana Kostum */}
-        <div className="space-y-1.5">
-          <label htmlFor="rsvp-kostum" className="block text-xs font-semibold text-spooky-textMuted uppercase tracking-wider">
-            Rencana Kostum / Penampilan <span className="text-[10px] lowercase text-spooky-textDim">(opsional)</span>
-          </label>
-          <input
-            id="rsvp-kostum"
-            type="text"
-            name="kostum"
-            value={formData.kostum}
-            onChange={handleChange}
-            placeholder="Contoh: Drakula, Kasual Hitam, Cosplay, dsb."
-            className="w-full bg-spooky-input border border-white/10 text-white rounded-xl py-3 px-4 text-xs sm:text-sm outline-none focus:border-orange-500/60 focus:bg-[#151022] transition-all"
-          />
-        </div>
+        {/* KONDISI JIKA ENGGAK -> Form Alasan (Wajib diisi) */}
+        {formData.kehadiran === 'Tidak' && (
+          <div className="space-y-1.5 transition-all duration-200">
+            <label htmlFor="rsvp-alasan" className="block text-xs font-semibold text-rose-300 uppercase tracking-wider">
+              Alasan Tidak Ikut <span className="text-rose-500">*</span>
+            </label>
+            <textarea
+              id="rsvp-alasan"
+              name="alasan"
+              rows={3}
+              value={formData.alasan}
+              onChange={handleChange}
+              placeholder="Tuliskan alasan kenapa tidak bisa ikut pesta..."
+              className="w-full bg-spooky-input border border-rose-500/40 text-white rounded-xl py-3 px-4 text-xs sm:text-sm outline-none focus:border-rose-500 focus:bg-[#151022] transition-all resize-none placeholder:text-gray-500"
+              required
+            />
+            {errors.alasan && <p className="text-xs text-rose-400 font-medium">{errors.alasan}</p>}
+          </div>
+        )}
 
         {/* Submit */}
         <div className="pt-2">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3.5 px-5 rounded-xl font-medium text-xs sm:text-sm text-white bg-orange-600 hover:bg-orange-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-softOrange"
+            className="w-full py-3.5 px-5 rounded-xl font-medium text-xs sm:text-sm text-white bg-orange-600 hover:bg-orange-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-softOrange cursor-pointer"
           >
             {isSubmitting ? (
               <>

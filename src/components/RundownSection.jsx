@@ -1,27 +1,27 @@
 export default function RundownSection() {
   const events = [
     {
-      time: '18:30 - 19:15',
-      title: 'Welcome Drink & Registration',
-      desc: 'Registrasi kehadiran, sambutan minuman pembuka, dan sesi foto santai di photo booth.',
+      time: '00:00 - 00:00',
+      title: 'Lorem Ipsum Dolor Sit Amet',
+      desc: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       isHighlight: false,
     },
     {
-      time: '19:15 - 20:15',
-      title: 'Dinner & Social Gathering',
-      desc: 'Makan malam bersama dengan hidangan prasmanan, makanan ringan, dan minuman free flow.',
+      time: '00:00 - 00:00',
+      title: 'Sed Ut Perspiciatis Unde Omnis',
+      desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       isHighlight: false,
     },
     {
-      time: '20:15 - 21:15',
-      title: 'Costume Showcase & Prize Giving',
-      desc: 'Sesi parade kostum bagi rekan yang berpartisipasi dan pembagian hadiah untuk kategori terbaik.',
+      time: '00:00 - 00:00',
+      title: 'Duis Aute Irure Dolor in Reprehenderit',
+      desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       isHighlight: true,
     },
     {
-      time: '21:15 - Selesai',
-      title: 'Music & Networking Session',
-      desc: 'Sesi santai, musik akustik & DJ set, serta karaoke bersama bagi yang ingin bersantai lebih lama.',
+      time: '00:00 - 00:00',
+      title: 'Excepteur Sint Occaecat Cupidatat',
+      desc: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       isHighlight: false,
     },
   ];
@@ -36,7 +36,7 @@ export default function RundownSection() {
           Susunan Acara
         </h2>
         <p className="text-xs sm:text-sm text-spooky-textMuted mt-1">
-          Jadwal perkiraan rangkaian acara pada malam pesta.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
 
@@ -44,18 +44,16 @@ export default function RundownSection() {
         {events.map((ev, idx) => (
           <div
             key={idx}
-            className={`flex flex-col sm:flex-row gap-3 sm:gap-6 p-4 sm:p-5 rounded-xl border transition-all duration-200 ${
-              ev.isHighlight
-                ? 'bg-orange-500/[0.06] border-orange-500/30'
-                : 'bg-white/[0.02] border-white/[0.06] hover:border-white/15'
-            }`}
+            className={`flex flex-col sm:flex-row gap-3 sm:gap-6 p-4 sm:p-5 rounded-xl border transition-all duration-200 ${ev.isHighlight
+              ? 'bg-orange-500/[0.06] border-orange-500/30'
+              : 'bg-white/[0.02] border-white/[0.06] hover:border-white/15'
+              }`}
           >
             <div className="sm:w-36 shrink-0">
-              <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-md ${
-                ev.isHighlight
-                  ? 'bg-orange-500/20 text-orange-400'
-                  : 'bg-white/[0.05] text-spooky-textMuted'
-              }`}>
+              <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-md ${ev.isHighlight
+                ? 'bg-orange-500/20 text-orange-400'
+                : 'bg-white/[0.05] text-spooky-textMuted'
+                }`}>
                 {ev.time}
               </span>
             </div>

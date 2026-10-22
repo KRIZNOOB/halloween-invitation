@@ -1,17 +1,15 @@
 /**
  * =========================================================================
- * GOOGLE APPS SCRIPT - HALLOWEEN RSVP WEB APP HANDLER
+ * GOOGLE APPS SCRIPT - VISKAL HALLOWEEN RSVP WEB APP HANDLER
  * =========================================================================
  * Cara Setup (Hanya butuh 2 Menit):
  * 1. Buka Google Sheets baru di https://sheets.new
- * 2. Beri nama spreadsheet, misal: "RSVP Halloween Party 2026"
- * 3. Di baris pertama (Row 1), buat header kolom berikut:
+ * 2. Beri nama spreadsheet, misal: "RSVP Viskal Halloween 2026"
+ * 3. Di baris pertama (Row 1), buat 4 kolom berikut:
  *    A1: Timestamp
  *    B1: Nama Lengkap
- *    C1: Divisi / Tim
- *    D1: Status Kehadiran
- *    E1: Rencana Kostum
- *    F1: Request Lagu / Catatan
+ *    C1: Status Kehadiran
+ *    D1: Alasan (Jika Tidak Ikut)
  * 4. Klik menu: Extensions (Ekstensi) > Apps Script
  * 5. Hapus semua kode default di Apps Script, lalu COPY & PASTE seluruh isi file ini.
  * 6. Klik tombol "Save" (ikon disket).
@@ -20,24 +18,20 @@
  * 9. Konfigurasi:
  *    - Description: RSVP Halloween Receiver
  *    - Execute as: Me (email kamu)
- *    - Who has access: Anyone (Siapa saja)  <-- PENTING agar tamu bisa submit tanpa login Google
- * 10. Klik "Deploy". Jika diminta otorisasi, klik "Review Permissions" > Pilih akun > "Advanced" > "Go to ... (unsafe)" > "Allow".
- * 11. Copy "Web App URL" (akhiran /exec).
- * 12. Buka file `app.js` di project web kamu, lalu paste URL tersebut ke variabel:
- *     const GOOGLE_SCRIPT_URL = "URL_HASIL_DEPLOY_KAMU_DISINI";
+ *    - Who has access: Anyone (Siapa saja)  <-- WAJIB agar tamu bisa kirim RSVP tanpa login akun Google
+ * 10. Klik "Deploy". Jika diminta otorisasi, klik "Review Permissions" > Pilih akun Google Anda > "Advanced" > "Go to ... (unsafe)" > "Allow".
+ * 11. Salin "Web App URL" (yang memiliki akhiran /exec).
  * =========================================================================
  */
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
-  // Tunggu maksimal 30 detik untuk menghindari tabrakan data jika disubmit bersamaan
   lock.tryLock(30000);
 
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var data = {};
 
-    // Tangani input baik dari JSON body maupun URL-encoded form data
     if (e.postData && e.postData.contents) {
       try {
         data = JSON.parse(e.postData.contents);
@@ -48,15 +42,14 @@ function doPost(e) {
       data = e.parameter || {};
     }
 
-    var timestamp = new Date();
+    // Format tanggal & waktu WIB (Asia/Jakarta)
+    var timestamp = Utilities.formatDate(new Date(), "Asia/Jakarta", "yyyy-MM-dd HH:mm:ss");
     var nama = data.nama || "-";
-    var divisi = data.divisi || "-";
     var kehadiran = data.kehadiran || "-";
-    var kostum = data.kostum || "-";
-    var catatan = data.catatan || "-";
+    var alasan = (data.kehadiran === "Ikut") ? "-" : (data.alasan || data.kostum || "-");
 
-    // Tambahkan baris baru ke Google Sheet
-    sheet.appendRow([timestamp, nama, divisi, kehadiran, kostum, catatan]);
+    // Simpan baris baru ke Google Sheet: Timestamp, Nama Lengkap, Status Kehadiran, Alasan
+    sheet.appendRow([timestamp, nama, kehadiran, alasan]);
 
     return ContentService
       .createTextOutput(JSON.stringify({
@@ -79,12 +72,11 @@ function doPost(e) {
   }
 }
 
-// Untuk cek apakah Web App aktif ketika diakses via browser langsung
 function doGet(e) {
   return ContentService
     .createTextOutput(JSON.stringify({
       status: "active",
-      message: "Halloween RSVP Google Apps Script Web App is running!"
+      message: "Viskal Halloween RSVP Web App is active!"
     }))
     .setMimeType(ContentService.MimeType.JSON);
 }

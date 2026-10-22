@@ -30,8 +30,12 @@ export default function TicketModal({ isOpen, onClose, ticketData }) {
             <span className="font-semibold text-xs text-white uppercase tracking-wider">
               Viskal Halloween Night
             </span>
-            <span className="text-[10px] font-medium bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded">
-              Confirmed
+            <span className={`text-[10px] font-medium px-2 py-0.5 rounded ${
+              ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir'
+                ? 'bg-orange-500/20 text-orange-400'
+                : 'bg-rose-500/20 text-rose-300'
+            }`}>
+              {ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'Confirmed' : 'Recorded'}
             </span>
           </div>
 
@@ -44,18 +48,20 @@ export default function TicketModal({ isOpen, onClose, ticketData }) {
             </div>
             <div className="flex justify-between">
               <span className="text-spooky-textDim">Status:</span>
-              <span className={`font-medium text-right ${
-                ticketData.kehadiran === 'Hadir' ? 'text-emerald-400' : 'text-spooky-textMuted'
+              <span className={`font-semibold text-right ${
+                ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'text-emerald-400' : 'text-rose-400'
               }`}>
-                {ticketData.kehadiran}
+                {ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'Ikut Hadir' : 'Berhalangan'}
               </span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-spooky-textDim">Kostum:</span>
-              <span className="text-white text-right max-w-[65%] truncate">
-                {ticketData.kostum}
-              </span>
-            </div>
+            {ticketData.alasan && ticketData.alasan !== '-' && (
+              <div className="flex justify-between items-start gap-2 pt-1 border-t border-white/[0.06]">
+                <span className="text-spooky-textDim shrink-0">Alasan:</span>
+                <span className="text-spooky-textMuted text-right text-[11px] leading-relaxed break-words">
+                  {ticketData.alasan}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

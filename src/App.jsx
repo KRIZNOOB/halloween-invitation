@@ -46,10 +46,10 @@ export default function App() {
     setIsOpened(true);
     if (audioRef.current) {
       try {
-        audioRef.current.volume = 0.75;
+        audioRef.current.volume = 0.70;
         await audioRef.current.play();
         setIsPlaying(true);
-        showToast('🎵 Musik Halloween aktif');
+        showToast('Musik Halloween aktif');
       } catch (err) {
         console.error('Audio play error:', err);
       }
@@ -68,7 +68,7 @@ export default function App() {
       try {
         await audioRef.current.play();
         setIsPlaying(true);
-        showToast('🎵 Musik Halloween aktif');
+        showToast('Musik Halloween aktif');
       } catch (err) {
         console.error('Audio play error:', err);
       }
@@ -109,11 +109,10 @@ export default function App() {
 
       {/* Main Content Layout with smooth reveal transition */}
       <div
-        className={`relative z-10 w-full transition-all duration-1000 ease-out ${
-          isOpened
-            ? 'opacity-100 scale-100 translate-y-0 filter-none'
-            : 'opacity-0 scale-[0.98] translate-y-6'
-        }`}
+        className={`relative z-10 w-full transition-all duration-1000 ease-out ${isOpened
+          ? 'opacity-100 scale-100 translate-y-0 filter-none'
+          : 'opacity-0 scale-[0.98] translate-y-6'
+          }`}
       >
         <Hero />
 
