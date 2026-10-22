@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #06030c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3c1e69;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff6d00;
+  }
+}
+
+@layer utilities {
+  .text-shadow-orange {
+    text-shadow: 0 0 25px rgba(255, 109, 0, 0.9), 0 0 50px rgba(255, 62, 0, 0.7);
+  }
+  .text-shadow-purple {
+    text-shadow: 0 0 20px rgba(199, 125, 255, 0.8), 0 0 40px rgba(157, 78, 221, 0.5);
+  }
+  .glass-card {
+    background: rgba(22, 13, 36, 0.78);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(157, 78, 221, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 158, 0, 0.55);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 109, 0, 0.25);
+  }
+}
+
+@keyframes soundBarAnim {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+.animate-sound-bar {
+  animation: soundBarAnim 1.2s infinite ease-in-out alternate;
+}
