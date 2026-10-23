@@ -54,7 +54,7 @@ export default function Hero() {
                 Friday, Oct 30, 2026
               </div>
               <div className="text-xs sm:text-sm text-spooky-textMuted font-medium truncate mt-0.5">
-                3:00 PM onwards
+                2:45 PM onwards
               </div>
             </div>
           </div>

@@ -26,6 +26,7 @@ export default function App() {
   // Audio State
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -39,38 +40,74 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [toastMessage]);
 
-  const [isOpened, setIsOpened] = useState(false);
+  // Preload audio and prevent ghost audio when closing/leaving tab
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
 
-  // Handler when user clicks "Open Invitation"
-  const handleOpenInvitation = async () => {
+    const handleStopAudioOnExit = () => {
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        handleStopAudioOnExit();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pagehide', handleStopAudioOnExit);
+    window.addEventListener('beforeunload', handleStopAudioOnExit);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pagehide', handleStopAudioOnExit);
+      window.removeEventListener('beforeunload', handleStopAudioOnExit);
+    };
+  }, []);
+
+  // Handler saat pengunjung klik "Buka Undangan"
+  const handleOpenInvitation = () => {
     setIsOpened(true);
     if (audioRef.current) {
-      try {
-        audioRef.current.volume = 0.70;
-        await audioRef.current.play();
-        setIsPlaying(true);
-        showToast('Halloween music playing');
-      } catch (err) {
-        console.error('Audio play error:', err);
+      audioRef.current.volume = 0.75;
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((err) => {
+            console.warn('Audio play failed:', err);
+          });
       }
     }
   };
 
-  // Handler toggle audio on/off
-  const handleToggleAudio = async () => {
+  // Handler toggle musik on/off di pojok kanan atas
+  const handleToggleAudio = () => {
     if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
-      showToast('Music paused');
+      showToast('Musik dimatikan');
     } else {
-      try {
-        await audioRef.current.play();
-        setIsPlaying(true);
-        showToast('Halloween music playing');
-      } catch (err) {
-        console.error('Audio play error:', err);
+      audioRef.current.volume = 0.75;
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            showToast('🎵 Musik Halloween aktif');
+          })
+          .catch((err) => {
+            console.error('Audio play error:', err);
+          });
       }
     }
   };
@@ -79,9 +116,9 @@ export default function App() {
     setTicketData(payload);
     setTicketModalOpen(true);
     if (sentToGoogle) {
-      showToast('RSVP synced to Google Sheets');
+      showToast('Konfirmasi tersinkronisasi ke Google Sheets');
     } else {
-      showToast('RSVP successfully recorded');
+      showToast('Konfirmasi berhasil dicatat');
     }
   };
 
@@ -90,15 +127,14 @@ export default function App() {
       {/* Layar Pembuka / Cover "Buka Undangan" */}
       <WelcomeCover onOpen={handleOpenInvitation} />
 
-      {/* Elemen Audio Native HTML5 */}
+      {/* Elemen Audio Native HTML5 (MP3 first for 100% universal device/WhatsApp browser support) */}
       <audio
         ref={audioRef}
         loop
         preload="auto"
       >
+        <source src="/assets/sound.mp3" type="audio/mpeg" />
         <source src="/assets/sound.weba" type="audio/webm" />
-        <source src="/assets/halloween_sound.weba" type="audio/webm" />
-        <source src="/assets/spooky_ghost.wav" type="audio/wav" />
       </audio>
 
       {/* Subtle Background Interactive Canvas */}
@@ -109,10 +145,11 @@ export default function App() {
 
       {/* Main Content Layout with smooth reveal transition */}
       <div
-        className={`relative z-10 w-full transition-all duration-1000 ease-out ${isOpened
-          ? 'opacity-100 scale-100 translate-y-0 filter-none'
-          : 'opacity-0 scale-[0.98] translate-y-6'
-          }`}
+        className={`relative z-10 w-full transition-all duration-1000 ease-out ${
+          isOpened
+            ? 'opacity-100 scale-100 translate-y-0 filter-none'
+            : 'opacity-0 scale-[0.98] translate-y-6'
+        }`}
       >
         <Hero />
 

@@ -1,27 +1,33 @@
 export default function RundownSection() {
   const events = [
     {
-      time: '15:00 - 15:30',
-      title: 'Arrival & Spooky Welcome Treats',
-      desc: 'Guest check-in, welcome drinks, and Halloween-themed snack stations.',
+      time: '14:45 - 15:00',
+      title: 'Gathering & Costume Registration',
+      desc: 'Gather in full costume as a prerequisite to join the event.',
       isHighlight: false,
     },
     {
-      time: '15:30 - 16:30',
-      title: 'Fun Games & Spooky Challenges',
-      desc: 'Exciting group games, trivia challenges, and fun office entertainment.',
+      time: '15:00 - 15:15',
+      title: 'Event Briefing',
+      desc: 'Official opening, event guidelines, and carnival competition rules.',
       isHighlight: false,
     },
     {
-      time: '16:30 - 17:15',
-      title: 'Costume Runway & Award Ceremony',
-      desc: 'Show off your best costume on the floor and win awesome prizes!',
+      time: '15:15 - 16:00',
+      title: 'Costume Fashion Show',
+      desc: 'Runway showcase of all participants to compete for the best costume awards!',
       isHighlight: true,
     },
     {
-      time: '17:15 - End',
-      title: 'Feast, Photos & After Party',
-      desc: 'Delicious dinner, spooky photo booth sessions, and party time.',
+      time: '16:00 - 17:30',
+      title: 'Carnival Games',
+      desc: 'Exciting games, interactive challenges, and special prizes.',
+      isHighlight: false,
+    },
+    {
+      time: '17:30 - Finish',
+      title: 'Free Time & After Party',
+      desc: 'Relaxation session, group photos, dinner, and celebration.',
       isHighlight: false,
     },
   ];
@@ -36,7 +42,7 @@ export default function RundownSection() {
           Event Rundown
         </h2>
         <p className="text-xs sm:text-sm text-spooky-textMuted mt-1">
-          Timeline and itinerary for our Halloween celebration.
+          Estimated timeline and itinerary for the Viskal Halloween celebration.
         </p>
       </div>
 
@@ -45,15 +51,17 @@ export default function RundownSection() {
           <div
             key={idx}
             className={`flex flex-col sm:flex-row gap-3 sm:gap-6 p-4 sm:p-5 rounded-xl border transition-all duration-200 ${ev.isHighlight
-              ? 'bg-orange-500/[0.06] border-orange-500/30'
-              : 'bg-white/[0.02] border-white/[0.06] hover:border-white/15'
+                ? 'bg-orange-500/[0.06] border-orange-500/30'
+                : 'bg-white/[0.02] border-white/[0.06] hover:border-white/15'
               }`}
           >
             <div className="sm:w-36 shrink-0">
-              <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-md ${ev.isHighlight
-                ? 'bg-orange-500/20 text-orange-400'
-                : 'bg-white/[0.05] text-spooky-textMuted'
-                }`}>
+              <span
+                className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-md ${ev.isHighlight
+                    ? 'bg-orange-500/20 text-orange-400'
+                    : 'bg-white/[0.05] text-spooky-textMuted'
+                  }`}
+              >
                 {ev.time}
               </span>
             </div>
