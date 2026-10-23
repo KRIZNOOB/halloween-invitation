@@ -24,9 +24,9 @@ export default function LocationSection() {
             >
               <span>Open in Google Maps</span>
               <svg className="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
               </svg>
             </a>
           </div>
@@ -47,7 +47,7 @@ export default function LocationSection() {
             </li>
             <li className="flex items-start gap-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-1.5 shrink-0" />
-              <span>Dress code: Your Best Costume! Join the fun and show off your Halloween look.</span>
+              <span>Please wear your costume while working, get into character as you work from the start!</span>
             </li>
           </ul>
         </div>

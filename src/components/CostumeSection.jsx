@@ -59,7 +59,7 @@ export default function CostumeSection() {
       <div className="mt-8 py-3.5 px-5 rounded-xl bg-orange-500/[0.06] border border-orange-500/20 flex items-center justify-center gap-2.5 text-center">
         <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
         <p className="text-xs sm:text-sm font-medium text-orange-200/90 tracking-wider uppercase">
-          Dress Code: Your Best Costume
+          Note : There will be a prize for the best costume!
         </p>
       </div>
     </section>
