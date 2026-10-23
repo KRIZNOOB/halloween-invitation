@@ -1,24 +1,24 @@
 export default function CostumeSection() {
   const categories = [
     {
-      title: 'Spookiest Character',
-      tag: 'Spooky',
-      desc: 'The most terrifying, spine-chilling, and ghost-worthy costume of the event.',
+      title: 'Artists & Celebrities',
+      tag: 'Celebrity',
+      desc: 'Channel your favorite musicians, legendary actors, pop culture icons, or famous artists.',
     },
     {
-      title: 'Most Creative Design',
-      tag: 'Creative',
-      desc: 'Most innovative concept, DIY brilliance, and exceptional attention to detail.',
+      title: 'Professions & Occupations',
+      tag: 'Career',
+      desc: 'Suit up as a detective, chef, doctor, pilot, astronaut, or quirky workplace persona.',
     },
     {
-      title: 'Funniest Outfit',
-      tag: 'Humor',
-      desc: 'The most hilarious, witty, and meme-worthy outfit that brings pure laughter.',
+      title: 'Ghosts & Spooky Creatures',
+      tag: 'Horror',
+      desc: 'Classic phantoms, vampires, folklore ghouls, witches, and spine-chilling apparitions.',
     },
     {
-      title: 'Best Duo / Team',
-      tag: 'Squad',
-      desc: 'Best coordinated thematic costumes crafted together with a colleague.',
+      title: 'Film, Cartoon & Game Characters',
+      tag: 'Fictional',
+      desc: 'Iconic heroes, villains, and figures from beloved movies, anime, cartoons, and video games.',
     },
   ];
 
@@ -26,13 +26,13 @@ export default function CostumeSection() {
     <section className="bg-spooky-surface/60 border border-white/[0.08] rounded-2xl p-6 sm:p-10 relative">
       <div className="mb-8">
         <span className="text-[11px] font-semibold uppercase tracking-widest text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
-          Contest
+          Inspiration
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3">
-          Costume Award Categories
+          Costume References
         </h2>
         <p className="text-xs sm:text-sm text-spooky-textMuted mt-1">
-          Dress to impress! Stand a chance to win exclusive prizes and bragging rights.
+          Need inspiration for your look? Here are fun theme ideas to help spark your creativity.
         </p>
       </div>
 

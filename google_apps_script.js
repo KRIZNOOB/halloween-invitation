@@ -7,9 +7,9 @@
  * 2. Beri nama spreadsheet, misal: "RSVP Viskal Halloween 2026"
  * 3. Di baris pertama (Row 1), buat 4 kolom berikut:
  *    A1: Timestamp
- *    B1: Nama Lengkap
- *    C1: Status Kehadiran
- *    D1: Alasan (Jika Tidak Ikut)
+ *    B1: Nama
+ *    C1: Kehadiran
+ *    D1: Alasan
  * 4. Klik menu: Extensions (Ekstensi) > Apps Script
  * 5. Hapus semua kode default di Apps Script, lalu COPY & PASTE seluruh isi file ini.
  * 6. Klik tombol "Save" (ikon disket).

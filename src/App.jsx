@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import TicketModal from './components/TicketModal';
 import Toast from './components/Toast';
 
-// Mendukung Environment Variable di Vercel (VITE_GOOGLE_SCRIPT_URL) atau isi langsung di sini
+// Mengambil URL dari Environment Variable (VITE_GOOGLE_SCRIPT_URL)
 const DEFAULT_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
 
 export default function App() {
