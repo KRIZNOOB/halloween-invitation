@@ -9,13 +9,13 @@ export default function AudioWidget({ isPlaying, onToggle }) {
             ? 'bg-[#181126] border-orange-500 text-orange-400 shadow-[0_0_20px_rgba(234,88,12,0.4)] ring-1 ring-orange-500/50 scale-105'
             : 'bg-[#120e1c]/80 border-white/15 text-spooky-textMuted hover:border-orange-500/50 hover:text-white'
         }`}
-        title={isPlaying ? 'Klik untuk mematikan musik' : 'Klik untuk menyalakan musik'}
+        title={isPlaying ? 'Click to pause music' : 'Click to play music'}
       >
         <span className={`text-base ${isPlaying ? 'animate-bounce' : ''}`}>
           {isPlaying ? '🔊' : '🔇'}
         </span>
         <span>
-          {isPlaying ? 'Musik: ON' : 'Musik: OFF'}
+          {isPlaying ? 'Music: ON' : 'Music: OFF'}
         </span>
         {isPlaying && (
           <span className="flex items-center gap-0.5">

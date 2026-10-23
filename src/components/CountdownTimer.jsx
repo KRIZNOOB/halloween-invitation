@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const TARGET_EVENT_DATE = new Date('2026-10-30T00:00:00+08:00').getTime();
+const TARGET_EVENT_DATE = new Date('2026-10-30T15:00:00+08:00').getTime();
 
 export default function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -44,7 +44,7 @@ export default function CountdownTimer() {
             {timeLeft.days}
           </span>
           <span className="text-[10px] sm:text-xs text-spooky-textDim uppercase font-medium tracking-wider">
-            Hari
+            Days
           </span>
         </div>
 
@@ -54,7 +54,7 @@ export default function CountdownTimer() {
             {timeLeft.hours}
           </span>
           <span className="text-[10px] sm:text-xs text-spooky-textDim uppercase font-medium tracking-wider">
-            Jam
+            Hours
           </span>
         </div>
 
@@ -64,7 +64,7 @@ export default function CountdownTimer() {
             {timeLeft.minutes}
           </span>
           <span className="text-[10px] sm:text-xs text-spooky-textDim uppercase font-medium tracking-wider">
-            Menit
+            Minutes
           </span>
         </div>
 
@@ -74,7 +74,7 @@ export default function CountdownTimer() {
             {timeLeft.seconds}
           </span>
           <span className="text-[10px] sm:text-xs text-spooky-textDim uppercase font-medium tracking-wider">
-            Detik
+            Seconds
           </span>
         </div>
       </div>

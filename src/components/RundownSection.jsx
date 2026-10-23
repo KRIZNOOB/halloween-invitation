@@ -1,27 +1,27 @@
 export default function RundownSection() {
   const events = [
     {
-      time: '00:00 - 00:00',
-      title: 'Lorem Ipsum Dolor Sit Amet',
-      desc: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      time: '15:00 - 15:30',
+      title: 'Arrival & Spooky Welcome Treats',
+      desc: 'Guest check-in, welcome drinks, and Halloween-themed snack stations.',
       isHighlight: false,
     },
     {
-      time: '00:00 - 00:00',
-      title: 'Sed Ut Perspiciatis Unde Omnis',
-      desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      time: '15:30 - 16:30',
+      title: 'Fun Games & Spooky Challenges',
+      desc: 'Exciting group games, trivia challenges, and fun office entertainment.',
       isHighlight: false,
     },
     {
-      time: '00:00 - 00:00',
-      title: 'Duis Aute Irure Dolor in Reprehenderit',
-      desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      time: '16:30 - 17:15',
+      title: 'Costume Runway & Award Ceremony',
+      desc: 'Show off your best costume on the floor and win awesome prizes!',
       isHighlight: true,
     },
     {
-      time: '00:00 - 00:00',
-      title: 'Excepteur Sint Occaecat Cupidatat',
-      desc: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      time: '17:15 - End',
+      title: 'Feast, Photos & After Party',
+      desc: 'Delicious dinner, spooky photo booth sessions, and party time.',
       isHighlight: false,
     },
   ];
@@ -30,13 +30,13 @@ export default function RundownSection() {
     <section id="rundown-section" className="bg-spooky-surface/60 border border-white/[0.08] rounded-2xl p-6 sm:p-10 relative">
       <div className="mb-8">
         <span className="text-[11px] font-semibold uppercase tracking-widest text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
-          Rundown
+          Schedule
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3">
-          Susunan Acara
+          Event Rundown
         </h2>
         <p className="text-xs sm:text-sm text-spooky-textMuted mt-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Timeline and itinerary for our Halloween celebration.
         </p>
       </div>
 

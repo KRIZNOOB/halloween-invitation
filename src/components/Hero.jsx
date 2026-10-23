@@ -22,24 +22,24 @@ export default function Hero() {
           <span>Viskal Office Gathering &bull; 2026</span>
         </div>
 
-        {/* Main Title: Viskal Halloween Night */}
+        {/* Main Title: Viskal Fun Halloween */}
         <h1 className="mb-6">
           <span className="block text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-2">
             Viskal
           </span>
           <span className="block text-5xl sm:text-7xl md:text-8xl font-creepy text-orange-500 tracking-wider">
-            Halloween Night
+            Fun Halloween
           </span>
         </h1>
 
         {/* Spooky Tagline */}
         <p className="text-sm sm:text-base md:text-lg text-spooky-textMuted max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-          Tinggalkan meja kerjamu sebelum kegelapan menelan segalanya. Masuklah jika bernyali...
+          Step away from your desk before darkness settles in. Enter if you dare...
         </p>
 
         {/* Meta Info Grid - Clean, Spacious, and strictly Single-Line */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 max-w-4xl mx-auto mb-8 text-left">
-          {/* Card 1: Tanggal - Strict single-line with whitespace-nowrap */}
+          {/* Card 1: Date & Time */}
           <div className="bg-spooky-surface/85 border border-white/15 p-4 sm:p-5 rounded-2xl flex items-center gap-3.5 shadow-card hover:border-orange-500/40 transition-colors">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
@@ -51,12 +51,15 @@ export default function Hero() {
             </div>
             <div className="min-w-0">
               <div className="text-sm sm:text-base md:text-lg font-bold text-white tracking-tight whitespace-nowrap">
-                Jumat, 30 Okt 2026
+                Friday, Oct 30, 2026
+              </div>
+              <div className="text-xs sm:text-sm text-spooky-textMuted font-medium truncate mt-0.5">
+                3:00 PM onwards
               </div>
             </div>
           </div>
 
-          {/* Card 2: Lokasi */}
+          {/* Card 2: Location */}
           <div className="bg-spooky-surface/85 border border-white/15 p-4 sm:p-5 rounded-2xl flex items-center gap-3.5 shadow-card hover:border-orange-500/40 transition-colors">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
@@ -66,7 +69,7 @@ export default function Hero() {
             </div>
             <div className="min-w-0">
               <div className="text-sm sm:text-base md:text-lg font-bold text-white tracking-tight truncate">
-                Kantor Viskal Id
+                Viskal Office
               </div>
               <div className="text-xs sm:text-sm text-spooky-textMuted font-medium truncate mt-0.5">
                 Jl. Tukad Citarum III
@@ -86,7 +89,7 @@ export default function Hero() {
                 Dress Code
               </div>
               <div className="text-xs sm:text-sm text-spooky-textMuted font-medium truncate mt-0.5">
-                Kostum / Bebas
+                Your Best Costume
               </div>
             </div>
           </div>
@@ -101,13 +104,13 @@ export default function Hero() {
             href="#rsvp-section"
             className="px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-white bg-orange-600 hover:bg-orange-500 shadow-softOrange hover:-translate-y-0.5 transition-all"
           >
-            Konfirmasi Kehadiran (RSVP)
+            RSVP Now
           </a>
           <a
             href="#rundown-section"
             className="px-6 py-3.5 rounded-xl font-medium text-sm sm:text-base text-spooky-textMuted bg-white/[0.04] border border-white/10 hover:border-white/20 hover:text-white transition-all"
           >
-            Lihat Susunan Acara
+            View Event Rundown
           </a>
         </div>
       </div>

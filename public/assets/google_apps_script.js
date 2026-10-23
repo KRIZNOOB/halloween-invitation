@@ -42,13 +42,14 @@ function doPost(e) {
       data = e.parameter || {};
     }
 
-    // Format tanggal & waktu WIB (Asia/Jakarta)
+    // Format timestamp
     var timestamp = Utilities.formatDate(new Date(), "Asia/Jakarta", "yyyy-MM-dd HH:mm:ss");
     var nama = data.nama || "-";
     var kehadiran = data.kehadiran || "-";
-    var alasan = (data.kehadiran === "Ikut") ? "-" : (data.alasan || data.kostum || "-");
+    var isAttending = (data.kehadiran === "Ikut" || data.kehadiran === "Yes" || data.kehadiran === "Attending");
+    var alasan = isAttending ? "-" : (data.alasan || data.kostum || "-");
 
-    // Simpan baris baru ke Google Sheet: Timestamp, Nama Lengkap, Status Kehadiran, Alasan
+    // Save row: Timestamp, Name, Attendance, Reason
     sheet.appendRow([timestamp, nama, kehadiran, alasan]);
 
     return ContentService

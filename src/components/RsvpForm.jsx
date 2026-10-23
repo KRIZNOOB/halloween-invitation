@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
   const [formData, setFormData] = useState({
     nama: '',
-    kehadiran: 'Ikut',
+    kehadiran: 'Yes',
     alasan: '',
   });
 
@@ -50,12 +50,12 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
 
     const newErrors = {};
     if (!formData.nama.trim() || formData.nama.trim().length < 2) {
-      newErrors.nama = 'Nama lengkap wajib diisi.';
+      newErrors.nama = 'Please enter your name.';
     }
 
-    if (formData.kehadiran === 'Tidak') {
+    if (formData.kehadiran === 'No') {
       if (!formData.alasan.trim() || formData.alasan.trim().length < 2) {
-        newErrors.alasan = 'Mohon sertakan alasan kenapa tidak ikut.';
+        newErrors.alasan = 'Please let us know why you cannot attend.';
       }
     }
 
@@ -66,12 +66,12 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
 
     setIsSubmitting(true);
 
-    const isAttending = formData.kehadiran === 'Ikut';
+    const isAttending = formData.kehadiran === 'Yes' || formData.kehadiran === 'Ikut';
     const payload = {
       nama: formData.nama.trim(),
-      kehadiran: formData.kehadiran,
+      kehadiran: isAttending ? 'Yes' : 'No',
       alasan: isAttending ? '-' : formData.alasan.trim(),
-      kostum: isAttending ? 'Hadir' : `Tidak Ikut (Alasan: ${formData.alasan.trim()})`,
+      kostum: isAttending ? 'Attending' : `Can't Attend (Reason: ${formData.alasan.trim()})`,
       timestamp: new Date().toISOString(),
     };
 
@@ -114,7 +114,7 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
     // Reset form
     setFormData({
       nama: '',
-      kehadiran: 'Ikut',
+      kehadiran: 'Yes',
       alasan: '',
     });
   };
@@ -126,25 +126,25 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
     >
       <div className="mb-8 text-center max-w-xl mx-auto">
         <span className="text-[11px] font-semibold uppercase tracking-widest text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
-          RSVP &bull; Konfirmasi Kehadiran
+          RSVP &bull; Confirmation
         </span>
 
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-2 font-creepy tracking-wider text-orange-500">
           Are you in?
         </h2>
         <p className="text-xs sm:text-sm text-orange-300/80 font-medium tracking-wide mb-1">
-          Don't forget to wear ur best costume
+          Don't forget to wear your best costume
         </p>
         <p className="text-xs text-spooky-textMuted leading-relaxed">
-          Tentukan pilihanmu di bawah ini untuk membantu kami menyiapkan pesta terbaik.
+          Confirm your attendance below to help us prepare the best party experience!
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-5" noValidate>
-        {/* Nama Lengkap */}
+        {/* Name (tidak pakai nama lengkap & placeholder baru) */}
         <div className="space-y-1.5">
           <label htmlFor="rsvp-nama" className="block text-xs font-semibold text-spooky-textMuted uppercase tracking-wider">
-            Nama Lengkap <span className="text-orange-500">*</span>
+            Name <span className="text-orange-500">*</span>
           </label>
           <input
             id="rsvp-nama"
@@ -152,14 +152,14 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
             name="nama"
             value={formData.nama}
             onChange={handleChange}
-            placeholder="Contoh: Budi Santoso"
+            placeholder="Enter your name"
             className="w-full bg-spooky-input border border-white/10 text-white rounded-xl py-3 px-4 text-xs sm:text-sm outline-none focus:border-orange-500/60 focus:bg-[#151022] transition-all placeholder:text-gray-500"
             required
           />
           {errors.nama && <p className="text-xs text-red-400">{errors.nama}</p>}
         </div>
 
-        {/* Pilihan: Are you in? (Ikut vs Enggak) */}
+        {/* Choice: Are you in? */}
         <div className="space-y-1.5">
           <label className="block text-xs font-semibold text-spooky-textMuted uppercase tracking-wider">
             Are you in? <span className="text-orange-500">*</span>
@@ -167,15 +167,15 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
           <div className="grid grid-cols-2 gap-3">
             {[
               {
-                val: 'Ikut',
-                title: 'Ikut',
-                desc: 'Siap bergabung & pesta',
+                val: 'Yes',
+                title: "I'm In!",
+                desc: 'Ready to join & party',
                 isPositive: true,
               },
               {
-                val: 'Tidak',
-                title: 'Tidak',
-                desc: 'Berhalangan hadir',
+                val: 'No',
+                title: "Can't Make It",
+                desc: 'Unable to attend',
                 isPositive: false,
               },
             ].map((opt) => {
@@ -238,11 +238,11 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
           </div>
         </div>
 
-        {/* KONDISI JIKA ENGGAK -> Form Alasan (Wajib diisi) */}
-        {formData.kehadiran === 'Tidak' && (
+        {/* Reason when not attending */}
+        {formData.kehadiran === 'No' && (
           <div className="space-y-1.5 transition-all duration-200">
             <label htmlFor="rsvp-alasan" className="block text-xs font-semibold text-rose-300 uppercase tracking-wider">
-              Alasan Tidak Ikut <span className="text-rose-500">*</span>
+              Reason for Absence <span className="text-rose-500">*</span>
             </label>
             <textarea
               id="rsvp-alasan"
@@ -250,7 +250,7 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
               rows={3}
               value={formData.alasan}
               onChange={handleChange}
-              placeholder="Tuliskan alasan kenapa tidak bisa ikut pesta..."
+              placeholder="Tell us why you won't be able to make it..."
               className="w-full bg-spooky-input border border-rose-500/40 text-white rounded-xl py-3 px-4 text-xs sm:text-sm outline-none focus:border-rose-500 focus:bg-[#151022] transition-all resize-none placeholder:text-gray-500"
               required
             />
@@ -271,10 +271,10 @@ export default function RsvpForm({ scriptUrl, onSubmitSuccess }) {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                 </svg>
-                <span>Menyimpan konfirmasi...</span>
+                <span>Submitting confirmation...</span>
               </>
             ) : (
-              <span>Kirim Konfirmasi Kehadiran</span>
+              <span>Submit RSVP</span>
             )}
           </button>
         </div>

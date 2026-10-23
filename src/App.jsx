@@ -41,7 +41,7 @@ export default function App() {
 
   const [isOpened, setIsOpened] = useState(false);
 
-  // Handler saat pengunjung klik "Buka Undangan"
+  // Handler when user clicks "Open Invitation"
   const handleOpenInvitation = async () => {
     setIsOpened(true);
     if (audioRef.current) {
@@ -49,26 +49,26 @@ export default function App() {
         audioRef.current.volume = 0.70;
         await audioRef.current.play();
         setIsPlaying(true);
-        showToast('Musik Halloween aktif');
+        showToast('Halloween music playing');
       } catch (err) {
         console.error('Audio play error:', err);
       }
     }
   };
 
-  // Handler toggle musik on/off di pojok kanan atas
+  // Handler toggle audio on/off
   const handleToggleAudio = async () => {
     if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
-      showToast('Musik dimatikan');
+      showToast('Music paused');
     } else {
       try {
         await audioRef.current.play();
         setIsPlaying(true);
-        showToast('Musik Halloween aktif');
+        showToast('Halloween music playing');
       } catch (err) {
         console.error('Audio play error:', err);
       }
@@ -79,9 +79,9 @@ export default function App() {
     setTicketData(payload);
     setTicketModalOpen(true);
     if (sentToGoogle) {
-      showToast('Konfirmasi tersinkronisasi ke Google Sheets');
+      showToast('RSVP synced to Google Sheets');
     } else {
-      showToast('Konfirmasi berhasil dicatat');
+      showToast('RSVP successfully recorded');
     }
   };
 

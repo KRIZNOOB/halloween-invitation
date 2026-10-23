@@ -67,13 +67,13 @@ export default function WelcomeCover({ onOpen }) {
             Viskal
           </span>
           <span className="block text-6xl sm:text-7xl md:text-8xl font-creepy text-orange-500 tracking-wider">
-            Halloween Night
+            Fun Halloween
           </span>
         </div>
 
         {/* Tagline */}
         <p className="text-sm sm:text-base md:text-lg text-spooky-textMuted max-w-lg mx-auto mb-10 font-normal leading-relaxed">
-          Tinggalkan meja kerjamu sebelum kegelapan menjemput. Masuklah jika bernyali...
+          Step away from your desk before darkness falls. Enter if you dare...
         </p>
 
         {/* Well-Proportioned Button (Tidak Gepeng) */}
@@ -83,7 +83,7 @@ export default function WelcomeCover({ onOpen }) {
             onClick={handleOpenClick}
             className="group inline-flex items-center justify-center gap-3 min-w-[220px] sm:min-w-[240px] h-[54px] sm:h-[58px] px-8 rounded-full font-bold text-sm sm:text-base text-white bg-orange-600 hover:bg-orange-500 shadow-[0_8px_30px_rgba(234,88,12,0.4)] hover:shadow-[0_12px_40px_rgba(234,88,12,0.65)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
           >
-            <span>Buka Undangan</span>
+            <span>Open Invitation</span>
             {/* Crisp, High-Contrast White Jack-O'-Lantern Vector Icon */}
             <svg
               className="w-5 h-5 sm:w-6 sm:h-6 fill-white drop-shadow group-hover:rotate-12 transition-transform shrink-0"

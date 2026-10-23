@@ -1,24 +1,24 @@
 export default function CostumeSection() {
   const categories = [
     {
-      title: 'Lorem Ipsum Dolor',
-      tag: 'Lorem Tag',
-      desc: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+      title: 'Spookiest Character',
+      tag: 'Spooky',
+      desc: 'The most terrifying, spine-chilling, and ghost-worthy costume of the event.',
     },
     {
-      title: 'Amet Consectetur',
-      tag: 'Ipsum Tag',
-      desc: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+      title: 'Most Creative Design',
+      tag: 'Creative',
+      desc: 'Most innovative concept, DIY brilliance, and exceptional attention to detail.',
     },
     {
-      title: 'Adipiscing Elit Sed',
-      tag: 'Dolor Tag',
-      desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.',
+      title: 'Funniest Outfit',
+      tag: 'Humor',
+      desc: 'The most hilarious, witty, and meme-worthy outfit that brings pure laughter.',
     },
     {
-      title: 'Tempor Incididunt',
-      tag: 'Sit Tag',
-      desc: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.',
+      title: 'Best Duo / Team',
+      tag: 'Squad',
+      desc: 'Best coordinated thematic costumes crafted together with a colleague.',
     },
   ];
 
@@ -26,13 +26,13 @@ export default function CostumeSection() {
     <section className="bg-spooky-surface/60 border border-white/[0.08] rounded-2xl p-6 sm:p-10 relative">
       <div className="mb-8">
         <span className="text-[11px] font-semibold uppercase tracking-widest text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
-          Kompetisi
+          Contest
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3">
-          Kategori Penghargaan Kostum
+          Costume Award Categories
         </h2>
         <p className="text-xs sm:text-sm text-spooky-textMuted mt-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
+          Dress to impress! Stand a chance to win exclusive prizes and bragging rights.
         </p>
       </div>
 
@@ -55,11 +55,11 @@ export default function CostumeSection() {
         ))}
       </div>
 
-      {/* Reminder Banner - Sleek & Refined */}
+      {/* Reminder Banner */}
       <div className="mt-8 py-3.5 px-5 rounded-xl bg-orange-500/[0.06] border border-orange-500/20 flex items-center justify-center gap-2.5 text-center">
         <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
         <p className="text-xs sm:text-sm font-medium text-orange-200/90 tracking-wider uppercase">
-          Don't forget to wear ur best costume
+          Dress Code: Your Best Costume
         </p>
       </div>
     </section>

@@ -18,30 +18,30 @@ export default function TicketModal({ isOpen, onClose, ticketData }) {
         </div>
 
         <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
-          RSVP Berhasil Dicatat
+          RSVP Successfully Recorded
         </h3>
         <p className="text-xs text-spooky-textMuted mb-6 leading-relaxed">
-          Terima kasih telah mengisi konfirmasi kehadiran Viskal Halloween Night.
+          Thank you for confirming your attendance for Viskal Fun Halloween.
         </p>
 
         {/* Digital Ticket Pass */}
         <div className="bg-[#161222] border border-white/10 rounded-xl p-4 text-left mb-6">
           <div className="flex justify-between items-center border-b border-white/[0.08] pb-2.5 mb-3">
             <span className="font-semibold text-xs text-white uppercase tracking-wider">
-              Viskal Halloween Night
+              Viskal Fun Halloween
             </span>
             <span className={`text-[10px] font-medium px-2 py-0.5 rounded ${
-              ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir'
+              ticketData.kehadiran === 'Yes' || ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir'
                 ? 'bg-orange-500/20 text-orange-400'
                 : 'bg-rose-500/20 text-rose-300'
             }`}>
-              {ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'Confirmed' : 'Recorded'}
+              {ticketData.kehadiran === 'Yes' || ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'Confirmed' : 'Recorded'}
             </span>
           </div>
 
           <div className="space-y-2 text-xs">
             <div className="flex justify-between">
-              <span className="text-spooky-textDim">Nama:</span>
+              <span className="text-spooky-textDim">Name:</span>
               <strong className="text-white text-right max-w-[65%] truncate">
                 {ticketData.nama}
               </strong>
@@ -49,14 +49,14 @@ export default function TicketModal({ isOpen, onClose, ticketData }) {
             <div className="flex justify-between">
               <span className="text-spooky-textDim">Status:</span>
               <span className={`font-semibold text-right ${
-                ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'text-emerald-400' : 'text-rose-400'
+                ticketData.kehadiran === 'Yes' || ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'text-emerald-400' : 'text-rose-400'
               }`}>
-                {ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'Ikut Hadir' : 'Berhalangan'}
+                {ticketData.kehadiran === 'Yes' || ticketData.kehadiran === 'Ikut' || ticketData.kehadiran === 'Hadir' ? 'Attending' : 'Cannot Attend'}
               </span>
             </div>
             {ticketData.alasan && ticketData.alasan !== '-' && (
               <div className="flex justify-between items-start gap-2 pt-1 border-t border-white/[0.06]">
-                <span className="text-spooky-textDim shrink-0">Alasan:</span>
+                <span className="text-spooky-textDim shrink-0">Reason:</span>
                 <span className="text-spooky-textMuted text-right text-[11px] leading-relaxed break-words">
                   {ticketData.alasan}
                 </span>
@@ -67,9 +67,9 @@ export default function TicketModal({ isOpen, onClose, ticketData }) {
 
         <button
           onClick={onClose}
-          className="w-full py-2.5 px-4 rounded-xl font-medium text-xs sm:text-sm text-white bg-orange-600 hover:bg-orange-500 transition-colors"
+          className="w-full py-2.5 px-4 rounded-xl font-medium text-xs sm:text-sm text-white bg-orange-600 hover:bg-orange-500 transition-colors cursor-pointer"
         >
-          Selesai
+          Close
         </button>
       </div>
     </div>
